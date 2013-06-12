@@ -1,0 +1,23 @@
+{
+  "name": "javascript-idents",
+  "description": "Walks a JavaScript AST and collects Identifier nodes",
+  "author": {
+    "name": "Quinn Slack",
+    "email": "sqs@sourcegraph.com"
+  },
+  "main": "./idents",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sourcegraph/javascript-idents.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "acorn": "0.3.0"
+  },
+  "devDependencies": {
+    "mocha": "1.10.0"
+  }
+}
