@@ -8,7 +8,7 @@ API](https://developer.mozilla.org/en-US/docs/SpiderMonkey/Parser_API)-compliant
 
 It is intended for use in node.js but can be adapted to work in other JavaScript environments.
 
-Documentation: [javascript-idents on Sourcegraph](https://sourcegraph.com/repos/github.com/sourcegraph/javascript-idents)
+Documentation: [javascript-idents on Sourcegraph](https://sourcegraph.com/github.com/sourcegraph/javascript-idents)
 
 Example
 -------
