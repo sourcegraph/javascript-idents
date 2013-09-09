@@ -1,6 +1,12 @@
 javascript-idents
 =================
 
+[![xrefs](https://sourcegraph.com/api/repos/github.com/sourcegraph/javascript-idents/badges/xrefs.png)](https://sourcegraph.com/github.com/sourcegraph/javascript-idents)
+[![funcs](https://sourcegraph.com/api/repos/github.com/sourcegraph/javascript-idents/badges/funcs.png)](https://sourcegraph.com/github.com/sourcegraph/javascript-idents)
+[![top func](https://sourcegraph.com/api/repos/github.com/sourcegraph/javascript-idents/badges/top-func.png)](https://sourcegraph.com/github.com/sourcegraph/javascript-idents)
+[![library users](https://sourcegraph.com/api/repos/github.com/sourcegraph/javascript-idents/badges/library-users.png)](https://sourcegraph.com/github.com/sourcegraph/javascript-idents)
+[![status](https://sourcegraph.com/api/repos/github.com/sourcegraph/javascript-idents/badges/status.png)](https://sourcegraph.com/github.com/sourcegraph/javascript-idents)
+
 javascript-idents walks a JavaScript AST and collects all Identifier AST nodes. It relies on Marijn
 Haverbeke's [acorn.js](http://marijnhaverbeke.nl/acorn/) for AST walking, and it should be
 compatible with any [SpiderMonkey Parser
