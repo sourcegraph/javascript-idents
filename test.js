@@ -12,7 +12,15 @@ describe('Identifiers', function() {
     var src = 'var a={b: 3}; var c = a.b[d]; function f(w, x, y) { return z - q ? r : s; }';
     assert.deepEqual(
       identNames(src),
-      ['a', 'c', 'a', 'b', 'd', 'f', 'w', 'x', 'y', 'z', 'q', 'r', 's']
+      ['a', 'b', 'c', 'a', 'b', 'd', 'f', 'w', 'x', 'y', 'z', 'q', 'r', 's']
+    );
+    done();
+  });
+  it('lists object keys', function(done) {
+    var src = '({a:1, b: {c: 2}})';
+    assert.deepEqual(
+      identNames(src),
+      ['a', 'b', 'c']
     );
     done();
   });

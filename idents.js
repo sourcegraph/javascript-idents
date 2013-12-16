@@ -20,6 +20,15 @@ exports.inspect = function(node, found) {
       c(node.object, st);
       c(node.property, st);
     },
+    ObjectExpression: function(node, st, c) {
+      for (var i = 0; i < node.properties.length; ++i) {
+        var prop = node.properties[i];
+        if (prop.key.type === 'Identifier') {
+          c(prop.key, st);
+        }
+        c(prop.value, st);
+      }
+    },
     VariableDeclaration: function(node, st, c) {
       for (var i = 0; i < node.declarations.length; ++i) {
         var decl = node.declarations[i];
