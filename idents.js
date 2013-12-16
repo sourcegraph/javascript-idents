@@ -1,8 +1,9 @@
 var walk = require('acorn/util/walk');
 
 // inspect traverses the AST starting at node, calling found with each Identifier AST node it
-// encounters.
-exports.inspect = function(node, found) {
+// encounters. If includeLiteralKeys is true, then string literals in
+// ObjectExpressions are also found.
+exports.inspect = function(node, found, includeLiteralKeys) {
   var identWalker = walk.make({
     Function: function(node, st, c) {
       if (node.id) c(node.id, st);
@@ -18,13 +19,15 @@ exports.inspect = function(node, found) {
     },
     MemberExpression: function(node, st, c) {
       c(node.object, st);
-      c(node.property, st);
+      if (node.property.type === 'Identifier' || (node.property.type === 'Literal' && includeLiteralKeys)) {
+        c(node.property, st, 'Identifier');
+      }
     },
     ObjectExpression: function(node, st, c) {
       for (var i = 0; i < node.properties.length; ++i) {
         var prop = node.properties[i];
-        if (prop.key.type === 'Identifier') {
-          c(prop.key, st);
+        if (prop.key.type === 'Identifier' || includeLiteralKeys) {
+          c(prop.key, st, 'Identifier');
         }
         c(prop.value, st);
       }
@@ -43,11 +46,12 @@ exports.inspect = function(node, found) {
 };
 
 // all traverses the AST starting at node and returns an array of all Identifier AST nodes it
-// encounters.
-exports.all = function(node) {
+// encounters. If includeLiteralKeys is true, then string literals in
+// ObjectExpressions are also found.
+exports.all = function(node, includeLiteralKeys) {
   var idents = [];
   exports.inspect(node, function(ident) {
     idents.push(ident);
-  });
+  }, includeLiteralKeys);
   return idents;
 };
