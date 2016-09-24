@@ -19,9 +19,9 @@
     "test": "mocha"
   },
   "dependencies": {
-    "acorn": "~0.4.2"
+    "acorn": "^4.0.3"
   },
   "devDependencies": {
-    "mocha": "1.10.0"
+    "mocha": "^3.0.2"
   }
 }

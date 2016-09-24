@@ -1,7 +1,6 @@
-var walk = require('acorn/util/walk');
+var walk = require('acorn/dist/walk');
 
-// inspect traverses the AST starting at node, calling found with each Identifier AST node it
-// encounters.
+// inspect traverses the AST starting at node, calling found with each Identifier AST node it encounters.
 exports.inspect = function(node, found) {
   var identWalker = walk.make({
     Function: function(node, st, c) {
@@ -33,8 +32,7 @@ exports.inspect = function(node, found) {
   walk.recursive(node, null, identWalker);
 };
 
-// all traverses the AST starting at node and returns an array of all Identifier AST nodes it
-// encounters.
+// all traverses the AST starting at node and returns an array of all Identifier AST nodes it encounters.
 exports.all = function(node) {
   var idents = [];
   exports.inspect(node, function(ident) {
