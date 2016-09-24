@@ -72,49 +72,49 @@ describe('collects', () => {
 
   })
 
-  describe.skip('assignments', () => {
+  describe('assignments', () => {
 
     it('addition', () => {
-      assert.deepEqual(collect(`a += b`), ['a', 'b']);
+      assert.deepEqual(collect(`a += b`), ['b', 'a']);
     });
     it('subtraction', () => {
-      assert.deepEqual(collect(`a -= b`), ['a', 'b']);
+      assert.deepEqual(collect(`a -= b`), ['b', 'a']);
     });
     it('multiplication', () => {
-      assert.deepEqual(collect(`a *= b`), ['a', 'b']);
+      assert.deepEqual(collect(`a *= b`), ['b', 'a']);
     });
     it('division', () => {
-      assert.deepEqual(collect(`a /= b`), ['a', 'b']);
+      assert.deepEqual(collect(`a /= b`), ['b', 'a']);
     });
     it('remainder', () => {
-      assert.deepEqual(collect(`a %= b`), ['a', 'b']);
+      assert.deepEqual(collect(`a %= b`), ['b', 'a']);
     });
     it('exponentiation', () => {
-      assert.deepEqual(collect(`a **= b`), ['a', 'b']);
+      assert.deepEqual(collect(`a **= b`), ['b', 'a']);
     });
 
     it('left shift', () => {
-      assert.deepEqual(collect(`a <<= b`), ['a', 'b']);
+      assert.deepEqual(collect(`a <<= b`), ['b', 'a']);
     });
 
     it('right shift', () => {
-      assert.deepEqual(collect(`a >>= b`), ['a', 'b']);
+      assert.deepEqual(collect(`a >>= b`), ['b', 'a']);
     });
 
     it('unsigned right shift', () => {
-      assert.deepEqual(collect(`a >>>= b`), ['a', 'b']);
+      assert.deepEqual(collect(`a >>>= b`), ['b', 'a']);
     });
 
     it('bitwise AND', () => {
-      assert.deepEqual(collect(`a &= b`), ['a', 'b']);
+      assert.deepEqual(collect(`a &= b`), ['b', 'a']);
     });
 
     it('bitwise XOR', () => {
-      assert.deepEqual(collect(`a ^= b`), ['a', 'b']);
+      assert.deepEqual(collect(`a ^= b`), ['b', 'a']);
     });
 
     it('bitwise OR', () => {
-      assert.deepEqual(collect(`a |= b`), ['a', 'b']);
+      assert.deepEqual(collect(`a |= b`), ['b', 'a']);
     });
 
   });

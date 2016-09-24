@@ -17,6 +17,9 @@ const inspect = (ast, found) => {
     FunctionDeclaration: (node) => {
       found(node.id);
     },
+    AssignmentExpression: (node) => {
+      if(node.left.type === 'Identifier') found(node.left);
+    },
   });
 };
 
