@@ -10,12 +10,10 @@ const inspect = (ast, found) => {
       if(node.id.type === 'Identifier') found(node.id);
     },
     Function: (node) => {
+      if(node.id && node.id.type === 'Identifier') found(node.id);
       for (let param of node.params) {
         if(param.type === 'Identifier') found(param);
       }
-    },
-    FunctionDeclaration: (node) => {
-      found(node.id);
     },
     AssignmentExpression: (node) => {
       if(node.left.type === 'Identifier') found(node.left);

@@ -164,7 +164,8 @@ describe('collects', () => {
   describe('functions', () => {
 
     it('declaration', () => {
-      assert.deepEqual(collect(`function foo () {};`), ['foo']);
+      assert.deepEqual(collect(`function a () {};`), ['a']);
+      assert.deepEqual(collect(`const a = function b () {};`), ['b', 'a']);
     });
 
     it('parameters', () => {
@@ -271,19 +272,35 @@ describe('ignores', () => {
 
 
 
+it('kitchen sink', () => {
 
-it.skip('kitchen sink', () => {
-  const src = `
-    const a= {b: 3, c: [d]};
+  const results = collect(`
+    const a = {b: 3, c: [d]};
     let b = a.b[c];
     var c = function d (e, f, g) {
       return h - i ? j : k;
     };
     for (let l of m) n(l);
-  `;
-  assert.deepEqual(
-    collect(src),
-    ['todo']
-  );
-  done();
+  `).reduce((results, identifier) => {
+    if (!results[identifier]) results[identifier] = 1
+    else results[identifier] += 1
+    return results
+  }, {});
+
+  assert.deepEqual(results, {
+    a: 2,
+    b: 1,
+    c: 2,
+    d: 2,
+    e: 1,
+    f: 1,
+    g: 1,
+    h: 1,
+    i: 1,
+    j: 1,
+    k: 1,
+    l: 2,
+    m: 1,
+    n: 1,
+  });
 });
