@@ -1,9 +1,9 @@
 javascript-idents
 =================
 
-**javascript-idents walks a JavaScript AST and collects all Identifier AST nodes.** It relies on Marijn Haverbeke's [acorn.js](http://marijnhaverbeke.nl/acorn/) for AST walking, and it should be compatible with any [SpiderMonkey Parser API](https://developer.mozilla.org/en-US/docs/SpiderMonkey/Parser_API)-compliant JavaScript AST.
+**javascript-idents walks a [JS abstract syntax tree (AST)](https://github.com/estree/estree) and returns all identifiers the code uses.**
 
-It is intended for use in node.js but can be adapted to work in other JavaScript environments.
+It relies on Marijn Haverbeke's [Acorn](https://github.com/ternjs/acorn#acorn) for AST walking, and should work with any [ESTree](https://github.com/estree/estree#the-estree-spec)-compliant JavaScript AST.
 
 [![npm version](https://img.shields.io/npm/v/javascript-idents.svg)](https://www.npmjs.com/package/javascript-idents)
 [![build status](https://img.shields.io/travis/sourcegraph/javascript-idents.svg)](https://travis-ci.org/sourcegraph/javascript-idents)
@@ -14,30 +14,33 @@ It is intended for use in node.js but can be adapted to work in other JavaScript
 Example
 -------
 
-The following example prints the name of each Identifier AST node to the console.
+The following example prints the name of each `Identifier` node to the console.
 
 ```javascript
-const acorn = require('acorn');
+const acorn = require('acorn/dist/acorn');
 const idents = require('javascript-idents');
 
-const src = 'var c = a.b[d]; function f(w, x, y) { return z; }';
-const ast = acorn.parse(src);
+acorn.parse(`
+    const c = a.b[d];
+    function f (w, x, y) {
+        return z;
+    }
+`);
 
-idents.inspect(ast, (ident) => {
-  console.log('identifier found:', ident.name);
+idents.inspect(ast, (identifier) => {
+  console.log('identifier found:', identifier.name);
 });
 ```
 
 ```
-Ident: c
-Ident: a
-Ident: b
-Ident: d
-Ident: f
-Ident: w
-Ident: x
-Ident: y
-Ident: z
+identifier found: a
+identifier found: d
+identifier found: c
+identifier found: z
+identifier found: f
+identifier found: w
+identifier found: x
+identifier found: y
 ```
 
 

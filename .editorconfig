@@ -1,0 +1,13 @@
+# editorconfig.org
+root = true
+
+[*]
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# Use spaces in JavaScript, JSON and YAML.
+[**.{js,json,yml,yaml}]
+indent_style = spaces
+indent_size = 2

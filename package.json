@@ -10,6 +10,7 @@
   	"Jannis R <mail@jannisr.de>"
   ],
   "main": "idents.js",
+  "files": ["idents.js"],
   "version": "0.0.3",
   "repository": {
     "type": "git",
