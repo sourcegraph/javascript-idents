@@ -7,7 +7,7 @@ const inspect = (ast, found) => {
       found(node);
     },
     VariableDeclarator: (node) => {
-      found(node.id);
+      if(node.id.type === 'Identifier') found(node.id);
     },
     Function: (node) => {
       for (let param of node.params) {
@@ -19,6 +19,16 @@ const inspect = (ast, found) => {
     },
     AssignmentExpression: (node) => {
       if(node.left.type === 'Identifier') found(node.left);
+    },
+    ObjectPattern: (node) => {
+      for (let property of node.properties) {
+        if (property.value.type === 'Identifier') found(property.value);
+      }
+    },
+    ArrayPattern: (node) => {
+      for (let element of node.elements) {
+        if (element.type === 'Identifier') found(element);
+      }
     },
   });
 };

@@ -235,6 +235,20 @@ describe('collects', () => {
     assert.deepEqual(collect(`o = [a, 1, [b, 2]]`), ['a', 'b', 'o']);
   });
 
+  describe('destructuring', () => {
+
+    it('object destructuring', () => {
+      assert.deepEqual(collect(`const {a} = 1`), ['a']);
+      assert.deepEqual(collect(`const {a, b} = 1`), ['a', 'b']);
+    });
+
+    it('array destructuring', () => {
+      assert.deepEqual(collect(`const [a] = 1`), ['a']);
+      assert.deepEqual(collect(`const [a, b] = 1`), ['a', 'b']);
+    });
+
+  });
+
 });
 
 
