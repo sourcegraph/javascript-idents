@@ -1,32 +1,23 @@
 const walk = require('acorn/dist/walk');
 
 // inspect traverses the AST starting at node, calling found with each Identifier AST node it encounters.
-const inspect = (node, found) => {
-  const identWalker = walk.make({
-    Function: (node, st, c) => {
-      if (node.id) c(node.id, st);
-      for (let param of node.params)
-        c(param, st);
-      // TODO(sqs): defaults, rest?
-      c(node.body, st, 'ScopeBody');
-    },
+const inspect = (ast, found) => {
+  walk.simple(ast, {
     Identifier: (node) => {
       found(node);
     },
-    MemberExpression: (node, st, c) => {
-      c(node.object, st);
-      c(node.property, st);
+    VariableDeclarator: (node) => {
+      found(node.id);
     },
-    VariableDeclaration: (node, st, c) => {
-      for (let decl of node.declarations) {
-        if (decl.id.type === 'Identifier')
-          c(decl.id, st);
-        if (decl.init)
-          c(decl.init, st, 'Expression');
+    Function: (node) => {
+      for (let param of node.params) {
+        if(param.type === 'Identifier') found(param);
       }
-    }
+    },
+    FunctionDeclaration: (node) => {
+      found(node.id);
+    },
   });
-  walk.recursive(node, null, identWalker);
 };
 
 // all traverses the AST starting at node and returns an array of all Identifier AST nodes it encounters.
