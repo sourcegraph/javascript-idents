@@ -1,11 +1,16 @@
 {
   "name": "javascript-idents",
   "description": "Walks a JavaScript AST and collects Identifier nodes",
+  "license": "BSD-3-Clause",
   "author": {
     "name": "Quinn Slack",
     "email": "sqs@sourcegraph.com"
   },
-  "main": "./idents",
+  "contributors": [
+  	"Jannis R <mail@jannisr.de>"
+  ],
+  "main": "idents.js",
+  "files": ["idents.js"],
   "version": "0.0.3",
   "repository": {
     "type": "git",
@@ -15,9 +20,9 @@
     "test": "mocha"
   },
   "dependencies": {
-    "acorn": "~0.4.2"
+    "acorn": "^4.0.3"
   },
   "devDependencies": {
-    "mocha": "1.10.0"
+    "mocha": "^3.0.2"
   }
 }
