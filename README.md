@@ -51,3 +51,4 @@ Contributors
 ============
 
 * Quinn Slack <sqs@sourcegraph.com>
+* Jannis R <mail@jannisr.de>

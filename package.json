@@ -1,11 +1,15 @@
 {
   "name": "javascript-idents",
   "description": "Walks a JavaScript AST and collects Identifier nodes",
+  "license": "BSD-3-Clause",
   "author": {
     "name": "Quinn Slack",
     "email": "sqs@sourcegraph.com"
   },
-  "main": "./idents",
+  "contributors": [
+  	"Jannis R <mail@jannisr.de>"
+  ],
+  "main": "idents.js",
   "version": "0.0.3",
   "repository": {
     "type": "git",
