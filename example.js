@@ -1,3 +1,5 @@
+'use strict';
+
 const acorn = require('acorn/dist/acorn');
 const idents = require('.');
 

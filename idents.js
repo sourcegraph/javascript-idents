@@ -1,3 +1,5 @@
+'use strict';
+
 const walk = require('acorn/dist/walk');
 
 // inspect traverses the AST starting at node, calling found with each Identifier AST node it encounters.

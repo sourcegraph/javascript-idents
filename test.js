@@ -1,3 +1,5 @@
+'use strict';
+
 const idents = require('./idents');
 const acorn = require('acorn/dist/acorn');
 const assert = require('assert');
